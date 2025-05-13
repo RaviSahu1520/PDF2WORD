@@ -6,5 +6,4 @@ pdfplumber
 pdf2image
 python-docx
 reportlab
-zipfile
 PyMuPDF
