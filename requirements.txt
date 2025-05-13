@@ -1,0 +1,10 @@
+Flask
+Werkzeug
+PyPDF2
+Pillow
+pdfplumber
+pdf2image
+python-docx
+reportlab
+zipfile
+PyMuPDF

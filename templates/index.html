@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PDF Pro Suite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>All Your PDF Tools, One Professional Suite</h1>
+            <p>Merge, split, compress, convert, and secure PDFs with a seamless, user-friendly interface.</p>
+        </div>
+    </header>
+    <div class="top-flash">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+    <main class="tools-grid">
+        <section class="tool-card" id="merge">
+            <h2>Merge PDF</h2>
+            <p>Combine multiple PDFs into one seamless file.</p>
+            <form action="{{ url_for('merge_pdfs') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="files[]" accept=".pdf" multiple required>
+                <button type="submit">Merge</button>
+            </form>
+        </section>
+        <section class="tool-card" id="split">
+            <h2>Split PDF</h2>
+            <p>Extract pages or split your PDF into multiple files.</p>
+            <form action="{{ url_for('split_pdf') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Split</button>
+            </form>
+        </section>
+        <section class="tool-card" id="compress">
+            <h2>Compress PDF</h2>
+            <p>Reduce PDF file size while maintaining quality.</p>
+            <form action="{{ url_for('compress_pdf') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Compress</button>
+            </form>
+        </section>
+        <section class="tool-card" id="pdf-to-word">
+            <h2>PDF to Word</h2>
+            <p>Convert your PDFs to editable Word DOCX files.</p>
+            <form action="{{ url_for('pdf_to_word') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Convert</button>
+            </form>
+        </section>
+        <section class="tool-card" id="word-to-pdf">
+            <h2>Word to PDF</h2>
+            <p>Convert DOCX or DOC files into PDFs in one click.</p>
+            <form action="{{ url_for('word_to_pdf') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".doc,.docx" required>
+                <button type="submit">Convert</button>
+            </form>
+        </section>
+        <section class="tool-card" id="pdf-to-image">
+            <h2>PDF to Images</h2>
+            <p>Turn your PDF pages into high-quality images.</p>
+            <form action="{{ url_for('pdf_to_image') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Convert</button>
+            </form>
+        </section>
+        <section class="tool-card" id="image-to-pdf">
+            <h2>Image to PDF</h2>
+            <p>Convert JPG, PNG images into PDF documents.</p>
+            <form action="{{ url_for('image_to_pdf') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".jpg,.jpeg,.png" required>
+                <button type="submit">Convert</button>
+            </form>
+        </section>
+        <section class="tool-card" id="encrypt">
+            <h2>Encrypt PDF</h2>
+            <p>Password-protect your confidential PDF files.</p>
+            <form action="{{ url_for('encrypt_pdf') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Encrypt</button>
+            </form>
+        </section>
+    </main>
+  <footer>
+    <p>&copy; 2025 PDF Pro Suite. All rights reserved.</p>
+  </footer>
+</body>
+</html>
